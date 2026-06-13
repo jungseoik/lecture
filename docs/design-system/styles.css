@@ -1,0 +1,11 @@
+/* ==========================================================================
+   K-Study Match — global stylesheet entry point
+   Consumers link THIS one file. It only @imports the token + base layers.
+   Everything reachable from here ships to consuming projects.
+   ========================================================================== */
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/effects.css";
+@import "./tokens/base.css";

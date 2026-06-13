@@ -1,0 +1,22 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Semantic & Status" subtitle="Success, warning, danger, info" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 28px 30px; background: var(--bg-page); }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .pill { display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="pill" style="background:var(--success-bg);color:var(--success-fg)"><span class="dot" style="background:var(--success-fg)"></span>Success · 추천도 높음</span>
+    <span class="pill" style="background:var(--warning-bg);color:var(--warning-fg)"><span class="dot" style="background:var(--warning-fg)"></span>Warning · 보완 필요</span>
+    <span class="pill" style="background:var(--danger-bg);color:var(--danger-fg)"><span class="dot" style="background:var(--danger-fg)"></span>Danger · 입력 오류</span>
+    <span class="pill" style="background:var(--info-bg);color:var(--info-fg)"><span class="dot" style="background:var(--info-fg)"></span>Info · 안내</span>
+  </div>
+</body>
+</html>

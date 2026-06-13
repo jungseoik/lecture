@@ -1,0 +1,28 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Logo / Wordmark" subtitle="K-Study (blue) + Match (ink)" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 0; background: var(--bg-page); display: grid; grid-template-columns: 1fr 1fr; }
+  .pane { padding: 34px 32px; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+  .light { background: var(--neutral-0); }
+  .dark { background: var(--neutral-900); }
+  .mark { display: inline-flex; align-items: baseline; gap: 0.32em; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+  .lbl { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <div class="pane light">
+    <span class="lbl" style="color:var(--text-muted)">On light</span>
+    <span class="mark" style="font-size:30px"><span style="color:var(--brand)">K-Study</span><span style="color:var(--neutral-900);font-weight:700">Match</span></span>
+    <span class="mark" style="font-size:18px"><span style="color:var(--brand)">K-Study</span><span style="color:var(--neutral-900);font-weight:700">Match</span></span>
+  </div>
+  <div class="pane dark">
+    <span class="lbl" style="color:rgba(255,255,255,.55)">On dark</span>
+    <span class="mark" style="font-size:30px"><span style="color:var(--blue-300)">K-Study</span><span style="color:#fff;font-weight:700">Match</span></span>
+    <span class="mark" style="font-size:18px"><span style="color:rgba(255,255,255,.7)">K-Study</span><span style="color:#fff;font-weight:700">Match</span></span>
+  </div>
+</body>
+</html>

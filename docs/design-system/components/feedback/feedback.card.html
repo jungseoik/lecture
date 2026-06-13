@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" viewport="700x440" name="Modal / Dialog" subtitle="Login, signup, consultation & confirmation dialogs" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>
+  body { margin: 0; padding: 0; background: var(--bg-wash); min-height: 440px; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { Modal, Button, Badge, Checkbox } = window.KStudyMatchDesignSystem_624b2d;
+    function Demo() {
+      const [open, setOpen] = React.useState(true);
+      return (
+        <div style={{ padding: 26 }}>
+          <Button variant="secondary" onClick={() => setOpen(true)}>모달 열기</Button>
+          <Modal open={open} onClose={() => setOpen(false)} width={460}
+            title="이 학교에 대해 유학 상담을 요청하시겠습니까?"
+            subtitle="입력하신 유학 프로필 정보와 선택한 학교 정보가 플랫폼 관리자에게 전달됩니다."
+            footer={<>
+              <Button variant="ghost" onClick={() => setOpen(false)} style={{ border: "1px solid var(--border-subtle)" }}>취소</Button>
+              <Button variant="primary" onClick={() => setOpen(false)}>상담 요청하기</Button>
+            </>}>
+            <div style={{ background: "var(--neutral-50)", borderRadius: 12, padding: "14px 16px", display: "flex", flexDirection: "column", gap: 10, marginBottom: 16 }}>
+              {[["상담 요청 학교", "충북대학교"], ["상담 요청 학과", "경영학과"], ["예상 월 생활비", "840,000원"], ["연락 예정 수단", "이메일 / WhatsApp"]].map(([k, v]) => (
+                <div key={k} style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
+                  <span style={{ color: "var(--text-secondary)" }}>{k}</span>
+                  <span style={{ fontWeight: 700, color: "var(--text-heading)" }}>{v}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+              <Checkbox label="유학 프로필 정보를 관리자에게 제공하는 것에 동의합니다." required defaultChecked />
+              <Checkbox label="이메일·전화·WhatsApp으로 상담 안내를 받는 것에 동의합니다." required defaultChecked />
+            </div>
+          </Modal>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+  </script>
+</body>
+</html>

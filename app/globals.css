@@ -1,0 +1,380 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   K-Study Match — design tokens (ported from docs/design-system/tokens/*.css)
+   Source of truth: 신뢰감 있는 에듀/핀테크 SaaS 룩. One royal blue carries every
+   primary action and key number; clean white + soft blue-grey surfaces; pastel
+   accent chips per concept. Pretendard, heavy tight headings.
+   ========================================================================== */
+:root {
+  /* ---- Brand blue scale ---- */
+  --blue-50: #eef4fe;
+  --blue-100: #dce9fd;
+  --blue-200: #bbd2fb;
+  --blue-300: #8fb4f6;
+  --blue-400: #5b8def;
+  --blue-500: #2f6be6; /* core interactive blue */
+  --blue-600: #1f5bdb; /* primary buttons */
+  --blue-700: #1a4bb8; /* pressed / hover-dark */
+  --blue-800: #173e96;
+  --blue-900: #15336f;
+
+  /* ---- Neutral / ink scale ---- */
+  --neutral-0: #ffffff;
+  --neutral-25: #fbfcfe;
+  --neutral-50: #f5f7fb; /* page wash, subtle surfaces */
+  --neutral-100: #edf0f6;
+  --neutral-200: #e2e6ef; /* hairline borders */
+  --neutral-300: #cbd2df;
+  --neutral-400: #a4adbe;
+  --neutral-500: #7b8597; /* muted text */
+  --neutral-600: #5b6478; /* secondary text */
+  --neutral-700: #3c455a;
+  --neutral-800: #232b3d;
+  --neutral-900: #161c2b; /* display ink */
+
+  /* ---- Pastel accent pairs (icon chips per concept) ---- */
+  --accent-green-bg: #e6f6ee;
+  --accent-green-fg: #1f9d63; /* 생활비 */
+  --accent-purple-bg: #ece8fb;
+  --accent-purple-fg: #7257d8; /* 장학금 */
+  --accent-blue-bg: #dce9fd;
+  --accent-blue-fg: #2f6be6; /* 등록금 */
+  --accent-orange-bg: #fdebdb;
+  --accent-orange-fg: #ee8434; /* 기숙사 */
+  --accent-sky-bg: #e2eefb;
+  --accent-sky-fg: #4b82e8; /* 상담 / 외국인 비율 */
+
+  /* ---- Semantic status ---- */
+  --success-bg: #e6f6ee;
+  --success-fg: #1f9d63;
+  --success-strong: #138a53;
+  --warning-bg: #fef3dc;
+  --warning-fg: #b5821a;
+  --danger-bg: #fce8e8;
+  --danger-fg: #d7443e;
+  --info-bg: #e5effe;
+  --info-fg: #2f6be6;
+
+  /* ---- Brand & surface aliases ---- */
+  --brand: var(--blue-600);
+  --brand-hover: var(--blue-700);
+  --brand-soft: var(--blue-50);
+  --bg-page: var(--neutral-0);
+  --bg-wash: var(--neutral-50);
+  --bg-hero: #eaf1fc;
+  --surface-card: var(--neutral-0);
+  --surface-subtle: var(--neutral-50);
+  --surface-inset: var(--neutral-100);
+  --border-subtle: var(--neutral-200);
+  --border-strong: var(--neutral-300);
+  --border-focus: var(--blue-500);
+
+  /* ---- Text roles ---- */
+  --text-display: var(--neutral-900);
+  --text-heading: var(--neutral-800);
+  --text-body: var(--neutral-700);
+  --text-secondary: var(--neutral-600);
+  --text-muted: var(--neutral-500);
+  --text-on-brand: var(--neutral-0);
+  --text-link: var(--blue-600);
+  --text-stat: var(--blue-600);
+
+  /* ---- Typography ---- */
+  --font-sans: "Pretendard", "Pretendard Variable", -apple-system,
+    BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", Roboto,
+    "Helvetica Neue", "Noto Sans KR", sans-serif;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extra: 800;
+
+  --text-display-size: 48px;  --text-display-lh: 1.18;
+  --text-h1-size: 36px;       --text-h1-lh: 1.22;
+  --text-h2-size: 28px;       --text-h2-lh: 1.28;
+  --text-h3-size: 22px;       --text-h3-lh: 1.34;
+  --text-h4-size: 18px;       --text-h4-lh: 1.4;
+  --text-lg-size: 17px;       --text-lg-lh: 1.6;
+  --text-body-size: 15px;     --text-body-lh: 1.65;
+  --text-sm-size: 14px;       --text-sm-lh: 1.55;
+  --text-xs-size: 13px;       --text-xs-lh: 1.5;
+  --text-2xs-size: 12px;      --text-2xs-lh: 1.45;
+
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+
+  /* ---- Spacing (4px grid) & layout ---- */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 20px;  --space-6: 24px;  --space-7: 32px;  --space-8: 40px;
+  --space-9: 48px;  --space-10: 64px; --space-11: 80px; --space-12: 96px;
+  --space-13: 120px;
+  --gap-field: 16px;
+  --gap-card: 24px;
+  --pad-card: 24px;
+  --pad-section: 80px;
+  --container-max: 1120px;
+  --container-pad: 24px;
+
+  /* ---- Radius ---- */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+  --radius-pill: 999px;
+
+  /* ---- Shadows (cool blue-grey, low + diffuse) ---- */
+  --shadow-xs: 0 1px 2px rgba(22, 28, 43, 0.05);
+  --shadow-sm: 0 1px 3px rgba(22, 28, 43, 0.06), 0 1px 2px rgba(22, 28, 43, 0.04);
+  --shadow-md: 0 4px 12px rgba(22, 28, 43, 0.07);
+  --shadow-lg: 0 10px 28px rgba(22, 28, 43, 0.09);
+  --shadow-xl: 0 18px 48px rgba(22, 28, 43, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(47, 107, 230, 0.18);
+
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 320ms;
+}
+
+/* ==========================================================================
+   Tailwind theme mapping — generates utilities (bg-brand, text-ink, rounded-lg…)
+   ========================================================================== */
+@theme inline {
+  /* blue scale */
+  --color-blue-50: var(--blue-50);
+  --color-blue-100: var(--blue-100);
+  --color-blue-200: var(--blue-200);
+  --color-blue-300: var(--blue-300);
+  --color-blue-400: var(--blue-400);
+  --color-blue-500: var(--blue-500);
+  --color-blue-600: var(--blue-600);
+  --color-blue-700: var(--blue-700);
+  --color-blue-800: var(--blue-800);
+  --color-blue-900: var(--blue-900);
+
+  /* neutral scale */
+  --color-neutral-0: var(--neutral-0);
+  --color-neutral-25: var(--neutral-25);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+
+  /* brand + surfaces */
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
+  --color-ink: var(--neutral-900);
+  --color-hero: var(--bg-hero);
+  --color-wash: var(--bg-wash);
+  --color-surface: var(--surface-card);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-inset: var(--surface-inset);
+
+  /* text roles (fg-* to avoid clashing with text-* size utilities) */
+  --color-fg: var(--text-body);
+  --color-fg-heading: var(--text-heading);
+  --color-fg-display: var(--text-display);
+  --color-fg-secondary: var(--text-secondary);
+  --color-fg-muted: var(--text-muted);
+  --color-fg-on-brand: var(--text-on-brand);
+  --color-link: var(--text-link);
+
+  /* borders */
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-border-focus: var(--border-focus);
+
+  /* accent pairs */
+  --color-acc-green: var(--accent-green-fg);
+  --color-acc-green-soft: var(--accent-green-bg);
+  --color-acc-purple: var(--accent-purple-fg);
+  --color-acc-purple-soft: var(--accent-purple-bg);
+  --color-acc-blue: var(--accent-blue-fg);
+  --color-acc-blue-soft: var(--accent-blue-bg);
+  --color-acc-orange: var(--accent-orange-fg);
+  --color-acc-orange-soft: var(--accent-orange-bg);
+  --color-acc-sky: var(--accent-sky-fg);
+  --color-acc-sky-soft: var(--accent-sky-bg);
+
+  /* semantic */
+  --color-success: var(--success-fg);
+  --color-success-soft: var(--success-bg);
+  --color-success-strong: var(--success-strong);
+  --color-warning: var(--warning-fg);
+  --color-warning-soft: var(--warning-bg);
+  --color-danger: var(--danger-fg);
+  --color-danger-soft: var(--danger-bg);
+  --color-info: var(--info-fg);
+  --color-info-soft: var(--info-bg);
+
+  /* font */
+  --font-sans: var(--font-sans);
+
+  /* radius */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-pill: var(--radius-pill);
+
+  /* shadow */
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+
+  /* easing + container */
+  --ease-standard: var(--ease-standard);
+  --ease-out: var(--ease-out);
+  --container-page: var(--container-max);
+}
+
+/* ==========================================================================
+   Base layer — reset + document typography (from tokens/base.css)
+   ========================================================================== */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-lh);
+    color: var(--text-body);
+    background: var(--bg-page);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    color: var(--text-heading);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--text-link);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
+  a:hover {
+    color: var(--brand-hover);
+  }
+
+  button {
+    font-family: inherit;
+  }
+
+  ::selection {
+    background: var(--blue-100);
+    color: var(--blue-900);
+  }
+}
+
+/* ==========================================================================
+   Typography helper classes (t-* to avoid Tailwind text-* size collisions)
+   ========================================================================== */
+@layer components {
+  .t-display {
+    font-size: var(--text-display-size);
+    line-height: var(--text-display-lh);
+    letter-spacing: var(--tracking-tight);
+    font-weight: var(--weight-extra);
+    color: var(--text-display);
+  }
+  .t-h1 {
+    font-size: var(--text-h1-size);
+    line-height: var(--text-h1-lh);
+    letter-spacing: var(--tracking-tight);
+    font-weight: var(--weight-bold);
+    color: var(--text-heading);
+  }
+  .t-h2 {
+    font-size: var(--text-h2-size);
+    line-height: var(--text-h2-lh);
+    letter-spacing: var(--tracking-tight);
+    font-weight: var(--weight-bold);
+    color: var(--text-heading);
+  }
+  .t-h3 {
+    font-size: var(--text-h3-size);
+    line-height: var(--text-h3-lh);
+    letter-spacing: var(--tracking-snug);
+    font-weight: var(--weight-bold);
+    color: var(--text-heading);
+  }
+  .t-h4 {
+    font-size: var(--text-h4-size);
+    line-height: var(--text-h4-lh);
+    font-weight: var(--weight-semibold);
+    color: var(--text-heading);
+  }
+  .t-lead {
+    font-size: var(--text-lg-size);
+    line-height: var(--text-lg-lh);
+    color: var(--text-secondary);
+  }
+  .t-body {
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-lh);
+  }
+  .t-sm {
+    font-size: var(--text-sm-size);
+    line-height: var(--text-sm-lh);
+  }
+  .t-xs {
+    font-size: var(--text-xs-size);
+    line-height: var(--text-xs-lh);
+  }
+  .t-eyebrow {
+    font-size: var(--text-xs-size);
+    letter-spacing: var(--tracking-wide);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  /* tabular numbers for prices/scores (.ksm-tnum in the design system) */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* page container */
+  .container-page {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+}

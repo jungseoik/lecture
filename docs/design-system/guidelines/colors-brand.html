@@ -1,0 +1,29 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Brand Blue" subtitle="Royal-blue scale — actions, links, key figures" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 26px 28px; background: var(--bg-page); }
+  .scale { display: grid; grid-template-columns: repeat(9, 1fr); gap: 8px; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 56px; border-radius: 10px; border: 1px solid rgba(22,28,43,.06); }
+  .lbl { font-size: 11px; color: var(--text-secondary); text-align: center; font-variant-numeric: tabular-nums; }
+  .star { display:block; font-size:10px; color: var(--brand); text-align:center; height:12px; }
+</style>
+</head>
+<body>
+  <div class="scale">
+    <div class="sw"><div class="chip" style="background:var(--blue-50)"></div><div class="lbl">50</div></div>
+    <div class="sw"><div class="chip" style="background:var(--blue-100)"></div><div class="lbl">100</div></div>
+    <div class="sw"><div class="chip" style="background:var(--blue-200)"></div><div class="lbl">200</div></div>
+    <div class="sw"><div class="chip" style="background:var(--blue-300)"></div><div class="lbl">300</div></div>
+    <div class="sw"><div class="chip" style="background:var(--blue-400)"></div><div class="lbl">400</div></div>
+    <div class="sw"><div class="chip" style="background:var(--blue-500)"></div><div class="lbl">500</div></div>
+    <div class="sw"><div class="chip" style="background:var(--blue-600)"></div><div class="lbl">600</div><span class="star">brand</span></div>
+    <div class="sw"><div class="chip" style="background:var(--blue-700)"></div><div class="lbl">700</div><span class="star">hover</span></div>
+    <div class="sw"><div class="chip" style="background:var(--blue-900)"></div><div class="lbl">900</div></div>
+  </div>
+</body>
+</html>

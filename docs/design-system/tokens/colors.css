@@ -1,0 +1,82 @@
+/* ==========================================================================
+   K-Study Match — Color tokens
+   A trustworthy edu/fintech palette: a confident royal blue carries every
+   primary action and key number, sitting on clean white and soft blue-grey
+   surfaces. Pastel accent circles give the feature/utility iconography its
+   friendly, approachable character.
+   ========================================================================== */
+:root {
+  /* ---- Brand blue scale ------------------------------------------------ */
+  --blue-50:  #EEF4FE;
+  --blue-100: #DCE9FD;
+  --blue-200: #BBD2FB;
+  --blue-300: #8FB4F6;
+  --blue-400: #5B8DEF;
+  --blue-500: #2F6BE6;   /* core interactive blue */
+  --blue-600: #1F5BDB;   /* primary buttons */
+  --blue-700: #1A4BB8;   /* pressed / hover-dark */
+  --blue-800: #173E96;
+  --blue-900: #15336F;
+
+  /* ---- Neutral / ink scale --------------------------------------------- */
+  --neutral-0:   #FFFFFF;
+  --neutral-25:  #FBFCFE;
+  --neutral-50:  #F5F7FB;   /* page wash, subtle surfaces */
+  --neutral-100: #EDF0F6;
+  --neutral-200: #E2E6EF;   /* hairline borders */
+  --neutral-300: #CBD2DF;
+  --neutral-400: #A4ADBE;
+  --neutral-500: #7B8597;   /* muted text */
+  --neutral-600: #5B6478;   /* secondary text */
+  --neutral-700: #3C455A;
+  --neutral-800: #232B3D;
+  --neutral-900: #161C2B;   /* display ink */
+
+  /* ---- Pastel accent pairs (icon chips, illustrative badges) ----------- */
+  --accent-green-bg:   #E6F6EE;
+  --accent-green-fg:   #1F9D63;
+  --accent-purple-bg:  #ECE8FB;
+  --accent-purple-fg:  #7257D8;
+  --accent-blue-bg:    #DCE9FD;
+  --accent-blue-fg:    #2F6BE6;
+  --accent-orange-bg:  #FDEBDB;
+  --accent-orange-fg:  #EE8434;
+  --accent-sky-bg:     #E2EEFB;
+  --accent-sky-fg:     #4B82E8;
+
+  /* ---- Semantic status ------------------------------------------------- */
+  --success-bg:  #E6F6EE;
+  --success-fg:  #1F9D63;
+  --success-strong: #138A53;
+  --warning-bg:  #FEF3DC;
+  --warning-fg:  #B5821A;
+  --danger-bg:   #FCE8E8;
+  --danger-fg:   #D7443E;
+  --info-bg:     #E5EFFE;
+  --info-fg:     #2F6BE6;
+
+  /* ---- Semantic aliases ------------------------------------------------ */
+  --brand:            var(--blue-600);
+  --brand-hover:      var(--blue-700);
+  --brand-soft:       var(--blue-50);
+
+  --bg-page:          var(--neutral-0);
+  --bg-wash:          var(--neutral-50);
+  --bg-hero:          #EAF1FC;   /* soft sky behind the hero */
+  --surface-card:     var(--neutral-0);
+  --surface-subtle:   var(--neutral-50);
+  --surface-inset:    var(--neutral-100);
+
+  --border-subtle:    var(--neutral-200);
+  --border-strong:    var(--neutral-300);
+  --border-focus:     var(--blue-500);
+
+  --text-display:     var(--neutral-900);
+  --text-heading:     var(--neutral-800);
+  --text-body:        var(--neutral-700);
+  --text-secondary:   var(--neutral-600);
+  --text-muted:       var(--neutral-500);
+  --text-on-brand:    var(--neutral-0);
+  --text-link:        var(--blue-600);
+  --text-stat:        var(--blue-600);   /* the bold blue numbers */
+}

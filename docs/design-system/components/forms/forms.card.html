@@ -1,0 +1,56 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Form Controls" subtitle="Inputs, selects, checks, radios, stepper" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>
+  body { margin: 0; padding: 28px 30px; background: var(--bg-page); }
+  .cap { font-size: 12px; color: var(--text-muted); margin: 0 0 8px; }
+  .block { margin-bottom: 22px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .inline { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { Input, Select, Checkbox, RadioGroup, FormField, StepIndicator } = window.KStudyMatchDesignSystem_624b2d;
+    function Demo() {
+      const [fin, setFin] = React.useState("가능");
+      return (
+        <div>
+          <div className="block">
+            <StepIndicator steps={["기본 정보","유학 희망 정보","학업 정보","어학 정보","재정 및 서류"]} current={2} />
+          </div>
+          <div className="block grid">
+            <FormField label="대학명 검색"><Input placeholder="대학명을 입력하세요" iconLeft={<i className="ph ph-magnifying-glass" />} /></FormField>
+            <FormField label="지역"><Select placeholder="전체"><option>서울</option><option>충청권</option></Select></FormField>
+            <FormField label="GPA" required hint="4.5 만점 기준"><Input placeholder="3.4" /></FormField>
+            <FormField label="이메일" error="이메일 형식이 올바르지 않습니다."><Input defaultValue="gildong" invalid /></FormField>
+          </div>
+          <div className="block">
+            <p className="cap">재정증명 가능 여부</p>
+            <div className="inline">
+              <RadioGroup options={["가능","불가능"]} value={fin} onChange={setFin} name="fin" />
+            </div>
+          </div>
+          <div className="block">
+            <p className="cap">동의</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <Checkbox label="개인정보 수집 및 이용에 동의합니다." required defaultChecked />
+              <Checkbox label="이벤트 및 유학 정보 수신에 동의합니다." />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+  </script>
+</body>
+</html>
