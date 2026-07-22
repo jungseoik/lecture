@@ -38,3 +38,6 @@ yarn-error.log*
 .DS_Store
 *.pem
 /coverage
+
+# Claude Code 개인(로컬) 설정 — 공통 settings.json/commands 는 커밋
+.claude/settings.local.json
