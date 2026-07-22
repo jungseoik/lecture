@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createServerSupabase } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 /**
  * POST /api/consultations — 유학 상담요청 생성
@@ -7,6 +8,14 @@ import { createServerSupabase } from "@/lib/supabase/server";
  * 로그인 필요(비회원은 회원가입 유도). status='신규'.
  */
 export async function POST(request: Request) {
+  // 데모 모드(Supabase 미설정): 저장 없이 성공 응답으로 UI 흐름만 시연
+  if (!isSupabaseConfigured()) {
+    return NextResponse.json(
+      { ok: true, demo: true, consultation: { status: "신규(데모)" } },
+      { status: 201 },
+    );
+  }
+
   const supabase = await createServerSupabase();
   const {
     data: { user },

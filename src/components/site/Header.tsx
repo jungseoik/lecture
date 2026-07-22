@@ -23,6 +23,7 @@ export function Header() {
   const [user, setUser] = React.useState<User | null>(null);
 
   React.useEffect(() => {
+    if (!supabase) return; // 데모 모드: 인증 없음
     let active = true;
     supabase.auth.getUser().then(({ data }) => {
       if (active) setUser(data.user);
@@ -37,6 +38,7 @@ export function Header() {
   }, [supabase]);
 
   async function logout() {
+    if (!supabase) return;
     await supabase.auth.signOut();
     router.refresh();
   }

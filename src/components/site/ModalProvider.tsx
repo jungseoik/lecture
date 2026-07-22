@@ -92,6 +92,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   const close = React.useCallback(() => setModal(null), []);
 
   async function handleLogin() {
+    if (!supabase) {
+      setError("데모 모드예요. 로그인은 Supabase 설정 후 사용할 수 있어요.");
+      return;
+    }
     setLoading(true);
     setError(null);
     const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -102,6 +106,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   }
 
   async function handleSignup() {
+    if (!supabase) {
+      setError("데모 모드예요. 회원가입은 Supabase 설정 후 사용할 수 있어요.");
+      return;
+    }
     setLoading(true);
     setError(null);
     const { data, error } = await supabase.auth.signUp({

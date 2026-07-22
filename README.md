@@ -47,6 +47,20 @@ cp .env.example .env.local   # (없을 때만)
 pnpm dev                 # → http://localhost:3000
 ```
 
+### 🧪 데모 모드 — Supabase 없이 UI만 보기
+
+Docker/Supabase 없이 **UI만 빠르게** 확인하려면 `.env.local` 없이 바로 실행하세요.
+환경변수가 없으면 앱이 **자동으로 샘플 데이터(데모 모드)**로 동작합니다.
+
+```bash
+pnpm install
+pnpm dev        # → http://localhost:3000 (샘플 데이터로 3개 화면 모두 렌더)
+```
+
+- ✅ 되는 것: 3개 화면 UI·생활비 계산기·맞춤 추천·대학 목록/필터(모두 샘플 데이터)
+- ⛔ 데모 모드 제한: 회원가입·로그인·실제 상담요청 저장(→ "데모 모드" 안내 표시)
+- 실제 데이터·인증까지 쓰려면 아래 전체 설정(`pnpm db:start` + `.env.local`)을 따르세요.
+
 ### 스크립트
 
 | 명령 | 설명 |

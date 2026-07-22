@@ -1,5 +1,7 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { isSupabaseAdminConfigured } from "@/lib/supabase/config";
+import { SAMPLE_UNIVERSITIES } from "@/lib/sample-data";
 import { housingColumn } from "@/lib/living-cost";
 
 /** 카드/리스트에서 쓰는 대학 요약 정보 (조인 결과를 평탄화). */
@@ -120,25 +122,38 @@ async function livingByRegion(): Promise<Map<string, number>> {
   return map;
 }
 
-/** 전체 대학 요약 목록. */
+/** 전체 대학 요약 목록. Supabase 미설정/오류 시 샘플 데이터로 폴백(데모 모드). */
 export async function getUniversities(): Promise<UniversitySummary[]> {
-  const supabase = createAdminClient();
-  const [{ data }, living] = await Promise.all([
-    supabase.from("universities").select(SELECT).order("foreign_student_ratio", { ascending: false }),
-    livingByRegion(),
-  ]);
-  return ((data as unknown as Row[]) ?? []).map((r) => flatten(r, living));
+  if (!isSupabaseAdminConfigured()) return SAMPLE_UNIVERSITIES;
+  try {
+    const supabase = createAdminClient();
+    const [{ data }, living] = await Promise.all([
+      supabase.from("universities").select(SELECT).order("foreign_student_ratio", { ascending: false }),
+      livingByRegion(),
+    ]);
+    const rows = (data as unknown as Row[]) ?? [];
+    return rows.length ? rows.map((r) => flatten(r, living)) : SAMPLE_UNIVERSITIES;
+  } catch {
+    return SAMPLE_UNIVERSITIES;
+  }
 }
 
-/** 단일 대학 요약. */
+/** 단일 대학 요약. Supabase 미설정/오류 시 샘플 데이터로 폴백. */
 export async function getUniversity(id: string): Promise<UniversitySummary | null> {
-  const supabase = createAdminClient();
-  const [{ data }, living] = await Promise.all([
-    supabase.from("universities").select(SELECT).eq("id", id).single(),
-    livingByRegion(),
-  ]);
-  if (!data) return null;
-  return flatten(data as unknown as Row, living);
+  if (!isSupabaseAdminConfigured()) {
+    return SAMPLE_UNIVERSITIES.find((u) => u.id === id) ?? null;
+  }
+  try {
+    const supabase = createAdminClient();
+    const [{ data }, living] = await Promise.all([
+      supabase.from("universities").select(SELECT).eq("id", id).single(),
+      livingByRegion(),
+    ]);
+    if (!data) return SAMPLE_UNIVERSITIES.find((u) => u.id === id) ?? null;
+    return flatten(data as unknown as Row, living);
+  } catch {
+    return SAMPLE_UNIVERSITIES.find((u) => u.id === id) ?? null;
+  }
 }
 
 /** 생활비 컬럼 키 재노출 (route 에서 사용 가능). */

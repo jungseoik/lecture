@@ -1,8 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 /** Supabase 세션 쿠키를 매 요청마다 갱신한다. (Next 16 proxy 컨벤션) */
 export async function proxy(request: NextRequest) {
+  // 데모 모드(Supabase 미설정): 세션 처리 없이 통과
+  if (!isSupabaseConfigured()) return NextResponse.next({ request });
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(

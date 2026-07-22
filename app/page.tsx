@@ -16,6 +16,8 @@ import { LivingCostEstimator } from "@/components/site/LivingCostEstimator";
 import { Button } from "@/components/ui/Button";
 import { FeatureCard } from "@/components/ui/FeatureCard";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { isSupabaseAdminConfigured } from "@/lib/supabase/config";
+import { SAMPLE_REGIONS } from "@/lib/sample-data";
 import { KSM_IMG } from "@/lib/images";
 
 // 지역 표시 순서 (data.js 기준)
@@ -30,12 +32,18 @@ const REGION_ORDER = [
 ];
 
 async function getRegions(): Promise<string[]> {
-  const supabase = createAdminClient();
-  const { data } = await supabase.from("living_costs").select("region");
-  const regions = (data ?? []).map((r) => r.region as string);
-  return regions.sort(
-    (a, b) => REGION_ORDER.indexOf(a) - REGION_ORDER.indexOf(b),
-  );
+  if (!isSupabaseAdminConfigured()) return SAMPLE_REGIONS;
+  try {
+    const supabase = createAdminClient();
+    const { data } = await supabase.from("living_costs").select("region");
+    const regions = (data ?? []).map((r) => r.region as string);
+    if (!regions.length) return SAMPLE_REGIONS;
+    return regions.sort(
+      (a, b) => REGION_ORDER.indexOf(a) - REGION_ORDER.indexOf(b),
+    );
+  } catch {
+    return SAMPLE_REGIONS;
+  }
 }
 
 const FEATURES = [

@@ -1,6 +1,15 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { isSupabaseAdminConfigured } from "@/lib/supabase/config";
+import { SAMPLE_LIVING_COSTS } from "@/lib/sample-data";
 import { housingColumn, computeCost, LIFE_MULTIPLIER } from "@/lib/living-cost";
+
+// housing 컬럼 → 샘플 데이터 키 매핑
+const SAMPLE_KEY: Record<string, "dormitory" | "rent" | "gosiwon"> = {
+  dormitory_monthly_cost: "dormitory",
+  rent_monthly_cost: "rent",
+  gosiwon_monthly_cost: "gosiwon",
+};
 
 /**
  * GET /api/living-costs?region=서울&housing=기숙사&life=보통형
@@ -32,6 +41,19 @@ export async function GET(request: Request) {
       { error: `알 수 없는 생활 방식: ${life}` },
       { status: 400 },
     );
+  }
+
+  // 데모 모드(Supabase 미설정): 샘플 데이터로 계산
+  if (!isSupabaseAdminConfigured()) {
+    const sample = SAMPLE_LIVING_COSTS[region];
+    const base = sample?.[SAMPLE_KEY[column]];
+    if (base == null) {
+      return NextResponse.json(
+        { error: `'${region}' 지역의 생활비 데이터를 찾을 수 없습니다.` },
+        { status: 404 },
+      );
+    }
+    return NextResponse.json({ region, housing, life, base, ...computeCost(base, life), demo: true });
   }
 
   const supabase = createAdminClient();
