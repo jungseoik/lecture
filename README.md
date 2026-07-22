@@ -110,9 +110,11 @@ lecture/
 │       ├── supabase/             #   Supabase 클라이언트
 │       │   ├── admin.ts          #     서버 전용(service_role, RLS 우회)
 │       │   ├── server.ts         #     서버(쿠키 세션)
-│       │   └── client.ts         #     브라우저(anon)
-│       ├── universities.ts       #   대학 조회·평탄화 (server-only)
+│       │   ├── client.ts         #     브라우저(anon, 미설정 시 null)
+│       │   └── config.ts         #     Supabase 설정 감지(데모 모드 판별)
+│       ├── universities.ts       #   대학 조회·평탄화 (server-only, 미설정 시 샘플 폴백)
 │       ├── recommend.ts          #   추천 점수 산식(100점 규칙기반)
+│       ├── sample-data.ts        #   데모 모드용 샘플 데이터(대학·생활비·지역)
 │       ├── living-cost.ts        #   생활비 상수·계산
 │       ├── format.ts · cn.ts · images.ts   # 통화 포맷 · className · 이미지 URL
 │
